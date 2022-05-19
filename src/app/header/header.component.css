@@ -1,0 +1,49 @@
+.container{
+    width:100%;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
+    background-size: cover;
+    background-position: center;
+    padding-left: 8%;
+    padding-right: 8%;
+    box-sizing: border-box;
+}
+
+.navbar{
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  background-color: transparent;
+  padding: 0px 0;
+  transition: 0.3s;
+  display: flex;
+  height: 15%;
+  align-items: center;
+}
+
+.logo{
+    width: 120px;
+    height: 100px;
+    cursor: pointer;
+    background: url(src/assets/Photobook-logos_black.png) no-repeat;
+
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+    margin-right: 20px;
+}
+
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin-left: 60px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+}

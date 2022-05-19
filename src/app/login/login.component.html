@@ -1,0 +1,39 @@
+<app-header></app-header>
+<!DOCTYPE html>
+<html>
+<head>
+<title> CSS Login Screen Tutorial </title>
+</head>
+<body>
+    <div class="main">
+         <div class="form-box">
+             <div class="button-box">
+                 <div id="button"></div>
+                 <button type="button" class="toggle-btn" onclick="loginForm()">Log In</button>
+                 <button type="button" class="toggle-btn" onclick="registeration()">Register</button>
+             </div>
+             <div class="social-media-icons">
+                 <a  (click)="facebookSignin()"><img class="fb"></a>
+                 <img class="twitter">
+                 <a (click)="googleSignin()"><img class="gmail"></a>
+             </div>
+             <form #singupForm="ngForm" id="login1" class="form-group">
+                 <input type="text" class="input" placeholder="Enter Username" required>
+                 <input type="text" class="input" placeholder="Enter Password" required>
+                 <input type="checkbox" class="checkbox"><span>Remember Password</span>
+                 <button type="submit" class="submit">Log In</button>
+
+             </form>
+             <form id="register1" class="form-group">
+                <input type="text" class="input" placeholder="Enter Username" required>
+                <input type="email" class="input" placeholder="Enter Password" required>
+                <input type="text" class="input" placeholder="Enter Email" required>
+                <input type="checkbox" class="checkbox"><span>I agree to the terms and conditions </span>
+                <button type="submit" class="submit">Register</button>
+
+            </form>
+         </div>
+    </div>
+   
+</body>
+</html>
