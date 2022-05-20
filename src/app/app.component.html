@@ -1,4 +1,27 @@
 <!-- <app-home></app-home> -->
 <!-- <app-login></app-login> -->
 <!-- <app-header></app-header> -->
+<div class="navbar" *ngIf="!loggedIn()">
+    <img class="logo">
+    <nav>
+        <ul>
+            <li><a href="" routerLink = "">Home</a></li>
+            <li><a href="" routerLink = "/login" routerLinkActive= "active">Login</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+    </nav>
+    <img class="icon">
+</div>
+<div class="navbar" *ngIf="loggedIn()">
+    <img class="logo">
+    <nav>
+        <ul>
+            <li><a>Hello, &nbsp; {{userDocument.publicName}}</a></li>
+            <li><button type="button" (click)="onLogoutClick()" class="btn btn-outline-danger">Logout</button></li>
+        </ul>
+    </nav>
+    <img class="icon">
+</div>
 <router-outlet></router-outlet>
+
+<app-profile [show]="loggedIn()" *ngIf="!emailNotVerified && !this.userHasProfile"></app-profile>

@@ -123,6 +123,12 @@
 
 .checkbox{
     margin: 30px 10px 30px 0;
+    cursor: pointer;
+}
+
+.forgotPass{
+    cursor: pointer;
+    margin-left: 83px;
 }
 
 span{

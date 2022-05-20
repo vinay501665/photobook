@@ -4,7 +4,8 @@
     <nav>
         <ul>
             <li><a href="" routerLink = "" >Home</a></li>
-            <li><a href="" routerLink = "/login" routerLinkActive= "active">Login</a></li>
+            <li><a href="" routerLink = "/login" routerLinkActive= "active" *ngIf="!signOut">Login</a></li>
+            <li><a href="" *ngIf="signOut">Logout</a></li>
             <li><a href="">About</a></li>
         </ul>
     </nav>
