@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SignOutService } from '../sign-out.service';
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
 import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,7 @@ export class ProfileComponent implements OnInit {
   firestore: FirebaseTSFirestore;
   auth: FirebaseTSAuth;
 
-  constructor(private signOutService: SignOutService) {
+  constructor(private signOutService: SignOutService, private route:Router) {
     this.firestore = new FirebaseTSFirestore();
     this.auth = new FirebaseTSAuth();
    }
@@ -27,15 +28,17 @@ export class ProfileComponent implements OnInit {
 
   onClickCon(name: HTMLInputElement){
     let nameVal = name.value;
+    
+    let uid = (this.auth.getAuth().currentUser?.uid != undefined)? this.auth.getAuth().currentUser?.uid : null;
     this.firestore.create({
-      path:["Users"],
+      path:["Users", uid],
       data:{
         publicName: nameVal
       },
       onComplete: (docId) => {
         alert("profile created")
         name.value="";
-
+        this.route.navigate(["postLog"]);
       },
       onFail: (err) =>{
 

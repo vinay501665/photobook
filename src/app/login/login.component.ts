@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
         password:password,
         onComplete: (userCredentials) => {
           var user = userCredentials.user
-          console.log(user);
+          location.reload();
         },
         onFail: (err) => {
           alert("User doesn't exist")

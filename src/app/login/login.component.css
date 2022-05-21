@@ -5,8 +5,8 @@
 }
 
 .main{
-    height: 85%;
-    width:99%;
+    height: 100%;
+    width:100%;
     background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(src/assets/banner.jpg);
     background-position: center;
     position: absolute;
@@ -17,7 +17,7 @@
     width:380px;
     height:480px;
     position: relative;
-    margin: 6% auto;
+    margin: 10% auto;
     background: #fff;
     padding: 5px;
     overflow: hidden;

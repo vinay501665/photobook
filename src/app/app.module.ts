@@ -18,6 +18,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { PostLoginPageComponent } from './post-login-page/post-login-page.component';
 import { PostActivityComponent } from './post-activity/post-activity.component';
+import { PostsComponent } from './posts/posts.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { PostActivityComponent } from './post-activity/post-activity.component';
     ProfileComponent,
     EmailVerificationComponent,
     PostLoginPageComponent,
-    PostActivityComponent
+    PostActivityComponent,
+    PostsComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

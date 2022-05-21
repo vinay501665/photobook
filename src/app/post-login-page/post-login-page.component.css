@@ -1,7 +1,7 @@
 .container{
     width:100%;
     height:96vh;
-    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(src/assets/home-background.jpg);
+    /* background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(src/assets/home-background.jpg); */
     background-size: cover;
     background-position: center;
     padding-left: 8%;
@@ -28,7 +28,7 @@
     color: #818181;
     display: block;
     margin-top: 110px;
-    margin-left: 50px;
+    margin-left: 110px;
     cursor: pointer;
   }
   
@@ -45,3 +45,11 @@
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;} */
+
+#post-feed{
+    max-width: 500px;
+    margin: 5em;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;;
+}

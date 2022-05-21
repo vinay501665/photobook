@@ -1,11 +1,13 @@
 .navbar{
     display: flex;
     height: 15%;
+    width: 84%;
     align-items: center;
     padding-left: 8%;
     padding-right: 8%;
-    background-color: gray; 
-    position: sticky;
+    background-color: #111;
+; 
+    position: fixed;
     z-index: 1000;
     top: 0;
 }

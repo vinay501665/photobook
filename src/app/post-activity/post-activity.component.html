@@ -5,7 +5,7 @@
         </mat-card-title>
     </mat-card-header>
     <div>
-        <textarea placeholder="Write something"></textarea>
+        <textarea #descriptionInput placeholder="Write something"></textarea>
     </div>
     <div *ngIf="selectedImageFile" id="post-preview">
         <img id="post-preview-image"/>
@@ -17,6 +17,6 @@
                 <mat-icon>insert_photo</mat-icon>
             </label>
         </button>
-        <button mat-flat-button color="warn">Post</button>
+        <button mat-flat-button (click) ="onPostClick(descriptionInput)" color="warn">Post</button>
     </mat-card-actions>
 </mat-card>

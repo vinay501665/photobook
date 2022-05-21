@@ -16,7 +16,7 @@
     <img class="logo">
     <nav>
         <ul>
-            <li><a>Hello, &nbsp; {{userDocument.publicName}}</a></li>
+            <li><a>Hello, {{userDocument?.publicName}}&nbsp; </a></li>
             <li><button type="button" (click)="onLogoutClick()" class="btn btn-outline-danger">Logout</button></li>
         </ul>
     </nav>
@@ -24,4 +24,4 @@
 </div>
 <router-outlet></router-outlet>
 
-<app-profile [show]="loggedIn()" *ngIf="!emailNotVerified && !this.userHasProfile"></app-profile>
+<app-profile [show]="loggedIn()" *ngIf="!emailNotVerified && !this.userHasProfile" ></app-profile>

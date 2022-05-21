@@ -22,5 +22,8 @@ export class EmailVerificationComponent implements OnInit {
 
   onResendClick(){
     this.auth.sendVerificationEmail();
+    alert("Your request for resend verification email has been recieved. Please verify and try login again !!");
+    this.auth.signOut();
+    this.route.navigate(["login"]);
   }
 }

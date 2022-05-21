@@ -59,15 +59,21 @@ export class AppComponent {
 
   getUserProfile(){
     console.log("inside get profile");
+    let uid = this.auth.getAuth().currentUser?.uid;
+    console.log("inside get profile : "+uid);
     this.firestore.listenToDocument({
       name:"Getting values",
-      path:["Users", "QTZVFFtgIm14tPKzveUi"],
+      path:["Users", uid],
       onUpdate:(result) =>{
-        this.userDocument = <UserDocument>result.data();
-        console.log(this.userDocument.publicName);
+        if(<UserDocument>result!.data() != undefined){
+        this.userDocument = <UserDocument>result!.data();
+        }
+        console.log("/////////////////   "+this.userDocument.publicName);
         this.userDocument.publicName;
         this.userHasProfile = result.exists;
+        console.log("/////////////////   "+this.userHasProfile);
         if(this.userHasProfile){
+          console.log("inside get user profile")
           this.route.navigate(["postLog"]);
         }
       }

@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            {{creatorName}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{postData?.comment}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-content src="{{postData?.imageUrl}}"> 
+    <mat-card-actions>
+        <mat-icon class="action-item" (click)="onComment()" >
+            chat_bubble
+        </mat-icon>
+        <mat-icon class="action-item" >
+            favorite_border
+        </mat-icon>
+        <mat-icon class="action-item" (click)="fileDownload(postData?.imageUrl)" >
+           save
+        </mat-icon>
+    </mat-card-actions>   
+</mat-card>
