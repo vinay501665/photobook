@@ -1,27 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { PostActivityComponent } from '../post-activity/post-activity.component';
 import { FirebaseTSFirestore, Limit, OrderBy, Where } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-post-login-page',
-  templateUrl: './post-login-page.component.html',
-  styleUrls: ['./post-login-page.component.css']
+  selector: 'app-timeline',
+  templateUrl: './timeline.component.html',
+  styleUrls: ['./timeline.component.css']
 })
-export class PostLoginPageComponent implements OnInit {
+export class TimelineComponent implements OnInit {
+
   fireStore = new FirebaseTSFirestore();
   posts:PostData[] = [];
   auth = new FirebaseTSAuth();
+  timelineYear: number[] = [];
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
     this.getPosts();
-  }
-
-  onCreatePostClick(){
-    this.dialog.open(PostActivityComponent);
   }
 
   getPosts(){
@@ -31,14 +28,15 @@ export class PostLoginPageComponent implements OnInit {
       where: [
         new Where("creator", "==", uid),
         new OrderBy("timestamp", "desc"),
-        new Limit(10)
+        new Limit(100)
       ],
       onComplete:(result) =>{
         result.docs.forEach(
           doc => {
             let posts = <PostData>doc.data();
             this.posts.push(posts);
-            console.log("inside posts error//// : "+this.posts);
+            this.getTimeline(this.posts);
+            //console.log(new Date(this.posts[0].timestamp?.seconds*1000));
           }
         )
       },
@@ -48,10 +46,25 @@ export class PostLoginPageComponent implements OnInit {
       }
     })
   }
+
+  getTimeline(posts: PostData[]){
+    posts.forEach((post) =>{
+     
+      console.log( new Date(post.timestamp?.seconds*1000).getFullYear());
+      this.timelineYear.indexOf(new Date(post.timestamp?.seconds*1000).getFullYear()) === -1 ? this.timelineYear.push(new Date(post.timestamp?.seconds*1000).getFullYear()) : console.log("Item already exists in array");
+    });    
+  }
+
+  onBackClick(){
+    this.route.navigate(["postLog"]);
+  }
+
 }
 
 export interface PostData{
   comment?: string,
-  createId?: string,
+  creator?: string,
   imageUrl?: string,
+  id?: number,
+  timestamp?: firebase.default.firestore.Timestamp
 }

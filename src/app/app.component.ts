@@ -4,6 +4,7 @@ import { SignOutService } from '../app/sign-out.service'
 import { of } from 'rxjs'
 import { Router } from '@angular/router';
 import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
+import { LogServiceService } from './log-service.service';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +15,11 @@ export class AppComponent {
   title = 'Photobook';
   auth = new FirebaseTSAuth();
   firestore: FirebaseTSFirestore;
-  userHasProfile: boolean= true;
+  userHasProfile: boolean= false;
   emailNotVerified:boolean = false;
   userDocument!: UserDocument;
 
-  constructor(private signOutService: SignOutService, private route:Router){
+  constructor(private signOutService: SignOutService, private route:Router, private logService: LogServiceService){
     this.firestore = new FirebaseTSFirestore();
     this.auth.listenToSignInStateChanges(
       user => {
@@ -49,6 +50,7 @@ export class AppComponent {
   loggedIn(){
     const signOutVal = of(this.auth.isSignedIn());
     this.signOutService.updateLoggedInValue(signOutVal);
+    this.logService.postLog(this.auth.getAuth().currentUser?.uid);
     return this.auth.isSignedIn();
   }
 

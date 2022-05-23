@@ -1,0 +1,23 @@
+<div class="timeline">
+    <div>
+        <button class="button" role="button" (click)="onBackClick()">Back</button>
+    </div>
+    <div class="container left">
+      <div class="content" *ngFor = "let year of timelineYear">
+        <h2>{{year}}</h2>
+        <div *ngFor = "let post of posts">
+            <div>
+                <a target="_blank" href="{{post?.imageUrl}}">
+                    <img src="{{post?.imageUrl}}">
+                 </a>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>2021</h2>
+        <p>Sample time</p>
+      </div>
+    </div>
+  </div>

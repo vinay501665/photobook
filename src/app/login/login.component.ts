@@ -35,11 +35,58 @@ export class LoginComponent implements OnInit {
   }
 
   facebookSignin() {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    console.log("inside facebook login");
+    let provider = new firebase.auth.FacebookAuthProvider();
+    console.log("inside facebook provider : "+provider);
+    firebase.auth().signInWithPopup(provider).then((result) => {
+      console.log("inside facebook login11");
+    var credential = result.credential;
+    console.log(credential);
+
+    // The signed-in user info.
+    var user = result.user;
+    console.log(user);
+
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+
+    // ...
+  });
+    //this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   googleSignin() {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+   // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+   let provider = new firebase.auth.GoogleAuthProvider();
+   firebase.auth().signInWithPopup(provider).then((result) => {
+    
+          var credential = result.credential;
+          console.log(credential);
+
+          // The signed-in user info.
+          var user = result.user;
+          console.log(user);
+          location.reload();
+
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+
+          // ...
+    });   
   }
 
   logOut(): void {

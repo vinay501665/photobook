@@ -5,6 +5,7 @@ import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFi
 import { FirebaseTSStorage } from 'firebasets/firebasetsStorage/firebaseTSStorage';
 import { FirebaseTSApp } from 'firebasets/firebasetsApp/firebaseTSApp';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-activity',
@@ -17,7 +18,7 @@ export class PostActivityComponent implements OnInit {
   auth: FirebaseTSAuth;
   storage:FirebaseTSStorage
 
-  constructor(private matDialogRef: MatDialogRef<PostActivityComponent>) { 
+  constructor(private matDialogRef: MatDialogRef<PostActivityComponent>, private route: Router) { 
     this.firestore = new FirebaseTSFirestore;
     this.auth = new FirebaseTSAuth;
     this.storage = new FirebaseTSStorage;
@@ -53,13 +54,18 @@ export class PostActivityComponent implements OnInit {
         this.firestore.create({
           path: ["Posts",postId],
           data: {
+            id: 1,
             comment:comment,
-            createId: this.auth.getAuth().currentUser?.uid,
+            creator: this.auth.getAuth().currentUser?.uid,
             imageUrl: downloadUrl,
             timestamp: FirebaseTSApp.getFirestoreTimestamp()
           },
           onComplete: (docId) => {
             this.matDialogRef.close();
+            setTimeout(() => {
+              this.route.navigate(["postLog"]);
+            }, 2000);
+            
           }
         })
       }

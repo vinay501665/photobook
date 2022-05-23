@@ -20,6 +20,8 @@ import { PostLoginPageComponent } from './post-login-page/post-login-page.compon
 import { PostActivityComponent } from './post-activity/post-activity.component';
 import { PostsComponent } from './posts/posts.component';
 import { CommentsComponent } from './comments/comments.component';
+import { TimelineComponent } from './timeline/timeline.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { CommentsComponent } from './comments/comments.component';
     PostLoginPageComponent,
     PostActivityComponent,
     PostsComponent,
-    CommentsComponent
+    CommentsComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { CommentsComponent } from './comments/comments.component';
     BrowserAnimationsModule,
     MatIconModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

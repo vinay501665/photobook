@@ -11,10 +11,10 @@
                  <button type="button" class="toggle-btn" onclick="loginForm()">Log In</button>
                  <button type="button" class="toggle-btn" onclick="registeration()">Register</button>
              </div>
-             <div class="social-media-icons">
+             <div class="social-media-icons">                 
+                <a (click)="googleSignin()"><img class="gmail"></a>
                  <a  (click)="facebookSignin()"><img class="fb"></a>
                  <img class="twitter">
-                 <a (click)="googleSignin()"><img class="gmail"></a>
              </div>
              <div id="login1" class="form-group" *ngIf="!forgotPasswordInput">
                  <input #loginUsername type="text" class="input" placeholder="Enter Username" required>
