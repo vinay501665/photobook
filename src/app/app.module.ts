@@ -22,6 +22,8 @@ import { PostsComponent } from './posts/posts.component';
 import { CommentsComponent } from './comments/comments.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AfterPostComponent } from './after-post/after-post.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { HttpClientModule } from '@angular/common/http';
     PostActivityComponent,
     PostsComponent,
     CommentsComponent,
-    TimelineComponent
+    TimelineComponent,
+    AfterPostComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

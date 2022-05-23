@@ -4,8 +4,9 @@ import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
 import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
 import { FirebaseTSStorage } from 'firebasets/firebasetsStorage/firebaseTSStorage';
 import { FirebaseTSApp } from 'firebasets/firebasetsApp/firebaseTSApp';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { PostLoginPageComponent } from '../post-login-page/post-login-page.component';
 
 @Component({
   selector: 'app-post-activity',
@@ -16,7 +17,8 @@ export class PostActivityComponent implements OnInit {
   selectedImageFile!: File;
   firestore: FirebaseTSFirestore;
   auth: FirebaseTSAuth;
-  storage:FirebaseTSStorage
+  storage:FirebaseTSStorage;
+  dialog!: MatDialog;
 
   constructor(private matDialogRef: MatDialogRef<PostActivityComponent>, private route: Router) { 
     this.firestore = new FirebaseTSFirestore;
@@ -62,9 +64,7 @@ export class PostActivityComponent implements OnInit {
           },
           onComplete: (docId) => {
             this.matDialogRef.close();
-            setTimeout(() => {
-              this.route.navigate(["postLog"]);
-            }, 2000);
+            this.route.navigate(["afterpost"]);
             
           }
         })
